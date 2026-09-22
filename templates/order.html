@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="icon" href="{% static "images/f.png" %}" alt="logo"/>
+    <link rel="stylesheet" href="{% static "css/orders.css" %}">
+</head>
+<body>
+    <div class="container">
+        <!-- ===== HEADER ===== -->
+    <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+        <a href="/home" class="logo">
+        <img src="{% static "images/foodielogo.png" %}" alt="logo" height="100px" width="150px">
+        </a>
+
+        <nav class="main-nav" id="mainNav">
+        <a href="/home">Home</a>
+        <a href="/menu#menu">Menu</a>
+        <a href="/why#why">Why Foodie</a>
+        <a href="/contact#contact">Contact</a>
+      <a href="/my-orders">My Orders</a>
+      <a href="/logout">Logout</a>
+        </nav>
+
+        <div class="header-actions">
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        </div>
+    </div>
+    </header>
+
+    <div id="spinner"></div>
+    <div class="order-box">
+
+        {% comment %} <div class="order-part1">
+            <img src="{% static "images\tick.png" %}" class="checkmark">
+            <div> 
+                <h2>Order Placed Successfully !</h2> 
+                <p>Your Food is on the on the way..</p>
+                <span>
+                <p><b>Order ID :</b> 123</p>
+                <p>|</p>
+               <p> placed on : 12 </p>
+                </span>
+            </div>
+                <img src="{% static "images\delivery boy.png" %}" class="delivery-boy">
+        </div>
+
+        <div class="order-part2">
+            <div class="ordera">
+                <div class="order-status">
+                  <h2>Order Tracking</h2>
+                  <p>You can Track the Live Status of your order</p>
+
+                  <div>
+                      <span class="line"></span>
+                      <span class="track track1"></span>
+                      <span class="track track2"></span>
+                      <span class="track track3"></span>
+                      <span class="track track4"></span>
+                  </div>
+
+                  <p>Your Food is being Prepared..</p>
+                </div>
+                <div class="order-items">
+                  <h2>Order Items</h2>
+                  <div>
+                    <span>
+                    <img src="" alt="" height="100px" width="100px">
+                    <span>
+                      <h2>Chicken pizza</h2>
+                      <p>1X149</p>
+                    </span>
+                    </span>
+
+                    <h1>149</h1>
+                  </div>
+                  
+                </div>
+            </div>
+
+            <div class="orderb">
+              <h2>Order Summary</h2>
+                <div class="order-summary">
+                    <span>
+                    <img src="" alt="" height="50px" width="50px">
+                    <span>
+                      <h2>Chicken pizza</h2>
+                      <p>1X149</p>
+                    </span>
+                    </span>
+
+                    <h1>149</h1>
+
+                </div>
+
+                <div class="order-total">
+                  <table>
+                      <tr>
+                        <td><h3>Items Total</h3></td>
+                        <td><h3>12</h3></td>
+                      </tr>
+
+                      <tr>
+                        <td><h3>Delivery Charges</h3></td>
+                        <td><h3>120</h3></td>
+                      </tr>
+
+                      <tr>
+                        <td><h3>Platform Fee</h3></td>
+                        <td><h3>12</h3></td>
+                      </tr>
+
+                      <tr>
+                        <td><h1>Total</h1></td>
+                        <td><h1>12</h1></td>
+                      </tr>
+                      
+                  </table>
+                </div>
+
+            </div>
+
+        </div> {% endcomment %}
+
+    </div>
+
+
+    
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" id="contact">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#home" class="logo logo-footer"><span class="logo-mark">🍊</span>Foodie</a>
+      <p>Good food from your favorite local kitchens, delivered while it's still hot.</p>
+      <form class="newsletter" id="newsletterForm">
+        <input type="email" placeholder="Your email" required>
+        <button type="submit">Join</button>
+      </form>
+    </div>
+    <div class="footer-links">
+      <div>
+        <h4>Company</h4>
+        <a href="#why">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#menu">Menu</a>
+        <a href="#">Partner kitchens</a>
+        <a href="#">Gift cards</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="#">Help center</a>
+        <a href="#">Track order</a>
+        <a href="#">Contact us</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Foodie. All rights reserved.</p>
+    <div class="socials">
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="Twitter">X</a>
+      <a href="#" aria-label="Facebook">FB</a>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+</body>
+
+<script>
+    const tickImage = "{% static 'images/tick.png' %}";
+    const deliveryImage = "{% static 'images/delivery boy.png' %}";
+</script>
+
+<script src="{% static "js/order.js" %}"></script>
+</html>

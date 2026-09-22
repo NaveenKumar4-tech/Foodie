@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.container{
+    min-height: 100vh;
+    background-color: orange;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: column;
+    gap:20px
+}
+
+#form{
+    width:400px;
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow:2px 2px 5px black;
+    text-align: center;
+}
+
+form input{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(231, 231, 231, 0.36);
+    outline: none;
+    margin: 10px 0;
+    
+}
+
+form div{
+    width: 100%;
+}
+
+form button{
+    width: 100%;
+    padding: 10px;
+    color:white; 
+    border:none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: orange;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+form input:focus{
+    border:1px solid orange;
+    
+}

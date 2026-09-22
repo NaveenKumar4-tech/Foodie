@@ -1,0 +1,91 @@
+{% load static %}
+{% load socialaccount %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create your account — Foodie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="{% static "images/f.png" %}" alt="logo"/>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body class="auth-body">
+
+<div class="auth-shell">
+
+  <!-- ===== FORM SIDE ===== -->
+  <div class="auth-panel">
+        <img src="{% static "images/foodielogo.png" %}" alt="logo" height="60px" width="120px">
+
+    <div class="auth-form-wrap">
+      <p class="eyebrow">Get started</p>
+      <h1>Create your account</h1>
+      <p class="auth-sub">Join Foodie and get your first delivery free.</p>
+
+      <form id="signupform" class="auth-form" >
+        {% csrf_token %}
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" placeholder="Alex Rivera" autocomplete="name">
+          <span class="field-error" id="nameError"></span>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+          <span class="field-error" id="emailError"></span>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-field">
+            <input type="password" id="password" name="password" placeholder="At least 8 characters" autocomplete="new-password">
+            <button type="button" class="toggle-pw" data-target="password" aria-label="Show password">👁</button>
+          </div>
+          <div class="pw-strength" id="pwStrength">
+          </div>
+          <span class="field-error" id="passError"></span>
+        </div>
+
+        <div class="field">
+          <label for="confirmPassword">Confirm password</label>
+          <div class="password-field">
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password">
+            <button type="button" class="toggle-pw" data-target="confirmPassword" aria-label="Show password">👁</button>
+          </div>
+          <span class="field-error" id="confirmPasswordError"></span>
+        </div>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="terms">
+          <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+        </label>
+        <span class="field-error" id="termsError"></span>
+
+        <button type="submit" class="auth-submit">Create account</button>
+      </form>
+
+      <p class="auth-switch">Already have an account? <a href="signin">Log in</a></p>
+    </div>
+  </div>
+
+  <!-- ===== IMAGE SIDE ===== -->
+  <div class="auth-media">
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80" alt="Spread of assorted dishes">
+    <div class="auth-media-overlay">
+      <h2>Good food finds you faster here.</h2>
+      <p>500+ dishes from local kitchens, delivered in under 30 minutes.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+</body>
+<script src="{% static 'js/auth.js' %}"></script>
+</html>

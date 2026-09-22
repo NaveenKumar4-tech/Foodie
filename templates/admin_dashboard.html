@@ -1,0 +1,263 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Foodie | Admin Dashboard</title>
+    <link rel="icon" href="{% static "images/f.png" %}" alt="logo"/>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            color: #222;
+        }
+
+        header {
+            background: #ff6b35;
+            color: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            margin: 0;
+        }
+
+        main {
+            max-width: 1250px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px #0000000a;
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        button {
+            padding: 11px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .secondary {
+            background: #e8e8e8;
+            color: #222;
+        }
+
+        .edit {
+            background: #1677ff;
+            color: white;
+        }
+
+        .delete {
+            background: #e53935;
+            color: white;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        th, td {
+            padding: 13px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #fafafa;
+        }
+
+        td img {
+            width: 55px;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .status {
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        @media (max-width: 650px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>🍔 Foodie Admin</h2>
+    <span>Product Dashboard</span>
+</header>
+
+<main>
+
+    <!-- PRODUCT FORM -->
+
+    <section class="card">
+
+        <h3 id="formTitle">Add New Product</h3>
+
+        <form id="product-form" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <div class="form-grid">
+
+                <input id="name" type="text"
+                    placeholder="Product Name" required>
+
+                <input id="category" type="text"
+                    placeholder="Category" required>
+
+                <input id="price" type="number"
+                    placeholder="Price" min="0"
+                    step="0.01" required>
+
+                <textarea id="description"
+                    placeholder="Product Description"
+                    required></textarea>
+
+                <label>
+                    Main Image
+                    <input id="image" type="file" accept="image/*">
+                </label>
+
+                <label>
+                    Image 2
+                    <input id="image1" type="file" accept="image/*">
+                </label>
+
+                <label>
+                    Image 3
+                    <input id="image2" type="file" accept="image/*">
+                </label>
+
+                <label>
+                    Image 4
+                    <input id="image3" type="file" accept="image/*">
+                </label>
+
+            </div>
+
+            <p class="status" id="formStatus"></p>
+
+            <button class="primary" id="saveBtn" type="submit">
+                Add Product
+            </button>
+
+            <button class="secondary" id="cancelBtn"
+                type="button" hidden>
+                Cancel Edit
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- PRODUCT TABLE -->
+
+    <section class="card">
+
+        <h3>Manage Products</h3>
+
+        <p id="productCount">Loading products...</p>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="product-box"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="/static/js/admin_dashboard.js" defer></script>
+
+</body>
+</html>
