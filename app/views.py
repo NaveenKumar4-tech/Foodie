@@ -597,14 +597,11 @@ def signup(request):
 def home(request):
     return render(request,"index.html")
 
-# def login_page(request):
-#     if request.user.is_superuser:
-#         return redirect("/admin-dashboard")
-#     else:
-#         return redirect("/home")
-    
-#     return render(request,"login.html")
-
+def login_page(request):
+    if request.user.is_authenticated:
+        return redirect("/home")
+    else:
+        return render(request,"login.html")
 
 def Logout(request):
     logout(request)

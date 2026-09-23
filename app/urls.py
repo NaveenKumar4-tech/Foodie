@@ -2,16 +2,15 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('home',home),
+    path('',login_page),
     path('api/signup',SignupView.as_view()),
     path('api/login',LoginView.as_view()),
     path('api/products',ProductData.as_view()),
-     path(
+    path(
         "admin-dashboard/",
         AdminDashboardView,
         name="admin-dashboard"
     ),
-
     # GET all products / POST new product
     path(
         "api/products/",
@@ -31,7 +30,6 @@ urlpatterns = [
     path("submit-feedback/<int:product_id>", FeedbackView.as_view(),name="sumit-feedback"),
     
     # -----------page render --------
-    # path('',login_page),
     path('signup',signup),
     path('signin',signin),
     path("logout",Logout),
