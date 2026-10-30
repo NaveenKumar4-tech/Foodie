@@ -41,9 +41,11 @@ form.addEventListener("submit", async (e) => {
 
     let csrf = csrfElement.value;
 
-    console.log("Username:", username.value);
-    console.log("Password:", password.value);
-    console.log("CSRF:", csrf);
+    if(username.value.trim() ==="" || password.value.trim() ===""){
+        showToast("username and password required")
+        btn.innerText = "Log in"
+        return ;
+    }
 
     try {
 
@@ -67,7 +69,8 @@ form.addEventListener("submit", async (e) => {
 
         let data = await response.json();
 
-        
+
+
         if (response.ok && data.status === "success") {
             btn.innerText = "Log in"
             btn.style.cursor = "progress"
@@ -80,9 +83,12 @@ form.addEventListener("submit", async (e) => {
             setTimeout(() => {
                 window.location.href = "/home";
             }, 3000);
-        }
+        }}else if(response.status == 429){
+            showToast("Try again after Sometime")
+            btn.innerText = "Log in"
 
-        } else {
+        }
+        else {
             showToast(data.message)
             btn.innerText = "Log in"
         }

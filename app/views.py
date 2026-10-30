@@ -10,8 +10,13 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
 from rest_framework.permissions import IsAdminUser
 from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.throttling import ScopedRateThrottle
+
 
 class SignupView(APIView):
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = 'register'
+    
     def post(self,request):
         try:
             name = request.data.get("username")
@@ -40,7 +45,9 @@ class SignupView(APIView):
                 })
 
 class LoginView(APIView):
-
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = 'login'
+    
     def post(self, request):
         try:
             name = request.data.get("username")
